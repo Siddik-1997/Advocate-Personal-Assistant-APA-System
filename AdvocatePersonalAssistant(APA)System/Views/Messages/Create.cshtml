@@ -1,0 +1,78 @@
+﻿@model AdvocatePersonalAssistantSystem.Models.Message
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <style>
+
+        body {
+            background-image: url(../images/b.png);
+            overflow: hidden;
+        }
+
+        .form {
+            margin-left: 355px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid gray;
+            background-color: #3498DB;
+            margin-top: 20px;
+        }
+
+            .form h4 {
+                padding: 20px 0px;
+                color: white;
+            }
+
+        label {
+            color: white;
+        }
+    </style>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4 form">
+        <h4>Message</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Case_Id" class="control-label"></label>
+                <input asp-for="Case_Id" class="form-control" placeholder="Insert the case Id" />
+                <span asp-validation-for="Case_Id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" placeholder="Insert  the phone number"/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Msg" class="control-label"></label>
+                <input asp-for="Msg" class="form-control" placeholder="Insert the specific Message" />
+                <span asp-validation-for="Msg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mdate" class="control-label"></label>
+                <input asp-for="Mdate" class="form-control" placeholder="Insert date" />
+                <span asp-validation-for="Mdate" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </form>
+        <div color="white">
+            <a asp-action="Index" >Message History</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

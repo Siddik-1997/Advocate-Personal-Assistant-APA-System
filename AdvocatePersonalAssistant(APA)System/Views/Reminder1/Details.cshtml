@@ -1,0 +1,36 @@
+﻿@model AdvocatePersonalAssistantSystem.Models.Reminder1
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reminder1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Case_Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Case_Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rdate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rms)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rms)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SL_no">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AdvocatePersonalAssistantSystem.Models.Message>
+
+@{
+    ViewData["Title"] = "Index";
+
+    <style>
+        body {
+            font-family: 'raleway';
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+            color: #04311d;
+            text-align: justify;
+            padding: 20px;
+            font-family: raleway;
+        }
+
+        th {
+            background-color: #76D7C4;
+            color: #fff;
+            padding: 10px;
+            border: 1px solid #d8dada;
+        }
+
+        td {
+            background-color: #d1f5e8;
+            padding: 10px;
+            border: 1px solid #d8dada;
+        }
+    </style>
+}
+<div style="font-family:Arial">
+    <h2>View Message</h2>
+
+    <p>
+        <a asp-action="Create">Send Message</a>
+    </p>
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Case_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Msg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mdate)
+                </th>
+
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Case_Id)
+                </td>
+       
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Msg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mdate)
+                </td>
+
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.M_Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.M_Id"></a>
+                    <a asp-action="Delete" asp-route-id="@item.M_Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,144 @@
+﻿@model IEnumerable<AdvocatePersonalAssistantSystem.Models.CaseProfile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        body {
+            font-family: 'raleway';
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+            color: #04311d;
+            text-align: justify;
+            padding: 20px;
+            font-family: raleway;
+        }
+
+        th {
+            background-color: #76D7C4;
+            color: #fff;
+            padding: 10px;
+            border: 1px solid #d8dada;
+        }
+
+        td {
+            background-color: #d1f5e8;
+            padding: 10px;
+            border: 1px solid #d8dada;
+        }
+    </style>
+    <div style="font-family:Arial">
+
+        <h2>Case Profile</h2>
+
+        <p>
+            <a asp-action="Create">Create Profile</a>
+        </p>
+        <p>
+            @using(Html.BeginForm("Index","CaseProfiles",FormMethod.Get))
+            {
+                <b>Search By:</b> @Html.RadioButton("searchBy","Case_Id",true)<text>Case ID  </text>  
+                  @Html.RadioButton("searchBy","CaseName")<text>Case Name</text><br>
+                @Html.TextBox("search")<input type="submit" value=" Search"/>
+            }
+        </p>
+        <table border="1" class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Case_Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CaseHistory)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CaseName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClientName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Plaintiff)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Defendant)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Idate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hdate)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="11">No row match search criteria</td>
+                    </tr>
+                }
+                else
+                {
+                foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Case_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaseHistory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plaintiff)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Defendant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hdate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Case_Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Case_Id"></a>
+                    <a asp-action="Delete" asp-route-id="@item.Case_Id">Delete</a>
+                </td>
+            </tr>
+                }
+                }
+            </tbody>
+                
+        </table>
+        </div>

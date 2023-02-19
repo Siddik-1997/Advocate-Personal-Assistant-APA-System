@@ -1,0 +1,91 @@
+﻿@model AdvocatePersonalAssistantSystem.Models.Registration
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+
+    body {
+        background-image: url(../images/A.jpg);
+        overflow: hidden;
+    }
+
+    .form {
+        margin-left: 355px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid gray;
+        background-color: whitesmoke;
+        margin-top:80px;
+    }
+
+        .form h4 {
+            padding: 20px 0px;
+            color: #3498DB;
+        }
+
+    label {
+        color: black;
+    }
+</style>
+
+
+@if (ViewBag.Staus != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong>@ViewBag.Message
+
+        </div>
+    }
+}
+
+else
+{
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    }
+}
+<div class="row">
+    <div class="col-md-4 form">
+
+        <h4>Registration</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" placeholder="Insert the user id" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pass" class="control-label"></label>
+                <input type="password" asp-for="Pass" class="form-control"  placeholder="Insert the password"/>
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RePass" class="control-label"></label>
+                <input type="password" asp-for="RePass" class="form-control" placeholder="Confirm the password" />
+                <span asp-validation-for="RePass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-default" />
+
+            </div>
+        </form>
+        <div>
+            <a asp-area="" asp-controller="Logins" asp-action="Create">Already have an account</a><br />
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
